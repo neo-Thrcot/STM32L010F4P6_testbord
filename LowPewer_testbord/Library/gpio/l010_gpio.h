@@ -21,7 +21,7 @@ void GPIO_Reset_Pin(Pin_t io_pin);
 void GPIO_Toggle_Pin(Pin_t io_pin);
 
 /*Input function*/
-
+bool GPIO_Input_Pin(Pin_t io_pin);
 
 /*Inline function*/
 

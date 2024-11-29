@@ -127,3 +127,15 @@ void GPIO_Toggle_Pin(Pin_t io_pin)
 
 	((GPIO_TypeDef*)(GPIOx_BASE(port_num))) -> ODR ^= (1 << pin_num);
 }
+
+bool GPIO_Input_Pin(Pin_t io_pin)
+{
+	uint8_t port_num	= ((io_pin & (0xF0U)) >> 4);
+	uint8_t pin_num		= (io_pin & (0x0FU));
+
+	if (port_num > 2) {
+		return 0;
+	}
+
+	return (((GPIO_TypeDef*)(GPIOx_BASE(port_num))) -> IDR & (1 << pin_num)) >> pin_num;
+}
